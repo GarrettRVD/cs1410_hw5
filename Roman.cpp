@@ -3,3 +3,7 @@
 //
 
 #include "Roman.h"
+void testConstructor()
+{
+
+}
