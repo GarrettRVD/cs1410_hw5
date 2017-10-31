@@ -5,14 +5,14 @@ using namespace std;
 
 void testConstructor();
 void checkTest(string a,int b, Roman c);
-//void testOperatorPlus();
+void testOperatorPlus();
 //void testOperatorPlusEqual();
 //void testOperatorIncrement();
 //void testConsoleIO();
 int main() {
 
-    testConstructor();
-    //testOperatorPlus();
+    //testConstructor();
+    testOperatorPlus();
     //testOperatorPlusEqual();
     //testOperatorIncrement();
     //testOutput();

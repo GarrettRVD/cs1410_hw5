@@ -14,8 +14,8 @@ class Roman
         unsigned int value;
         string romanNumeral;
     public:
-        Roman(): value(0), romanNumeral("NONE"){};   //This allows us to make empty objects. (Default Constructor)
-        Roman(string romNum): value(0),romanNumeral(romNum){};           //This takes Roman numeral as a string.
+        Roman(): value(0), romanNumeral("None"){};   //This allows us to make empty objects. (Default Constructor)
+        Roman(string romNum): value(),romanNumeral(romNum){};           //This takes Roman numeral as a string.
         int convertFromRoman(){
             int length = romanNumeral.length();
             for (int i = 0; i < length; ++i) {
@@ -44,7 +44,14 @@ class Roman
         string a = romanNumeral;
         return a;
     }
-
+    int getValue(){
+        return value;
+    }
+    Roman operator + (Roman const &obj){
+        Roman r1;
+        r1.value = this->value + obj.value;
+        return r1;
+    }
 };
 
 #endif
