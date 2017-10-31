@@ -41,5 +41,16 @@ void testOperatorPlus()
     b.convertFromRoman();
     Roman c = a + b;
     checkTest("testOperatorPlus #1", 1682, c);
+    //Make sure left and right operands weren't modified
+    checkTest("testOperatorPlus #2", 16, a);
+    checkTest("testOperatorPlus #2", 1666, b);
+
+    //Test adding an object with an int
+    c=a+52;
+    checkTest("testOperatorPlus #4", 68, c);
+    //make sure the left operand wasn't modified
+    checkTest("testOperatorPlus #5", 16, a);
+    //Test adding an int with an object
+    c = 578 + a;
 
 }

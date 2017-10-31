@@ -52,6 +52,13 @@ class Roman
         r1.value = this->value + obj.value;
         return r1;
     }
+    Roman operator + (int x)
+    {
+        Roman r1(*this);
+        r1.value+=x;
+        return r1;
+    }
+
 };
 
 #endif
