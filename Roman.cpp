@@ -51,6 +51,35 @@ void testOperatorPlus()
     //make sure the left operand wasn't modified
     checkTest("testOperatorPlus #5", 16, a);
     //Test adding an int with an object
-    c = 578 + a;
+    //
+    //
+    //***Make sure to add the last + operator
+    //
 
+}
+void testOperatorPlusEqual()
+{
+    //Test adding two roman objects
+    Roman a("MLII");
+    a.convertFromRoman();
+    Roman b("DDCCI");
+    b.convertFromRoman();
+    a += b;
+    checkTest("testOperatorPlusEqual #1", 2253, a);
+    //make sure the right operand wasn't modified
+    checkTest("testOperatorPlusEqual #2", 1201, b);
+    //Test adding on an integer
+    b += 17;
+    checkTest("testOperatorPlusEqual #3", 1218, b);
+}
+void testOperatorIncrement()
+{
+    //Test prefix increment
+    Roman a("MLII");
+    a.convertFromRoman();
+    Roman b("DDCCI");
+    b.convertFromRoman();
+    b = ++a;
+    checkTest("testOperatorIncrement #1", 1053, a);
+    checkTest("testOperatorIncrement #2", 1053, b); //BUG with the checkTest
 }

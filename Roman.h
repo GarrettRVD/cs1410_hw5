@@ -58,6 +58,21 @@ class Roman
         r1.value+=x;
         return r1;
     }
+    //Plus Equal Operators
+    Roman& operator += (Roman const &obj){
+        this->value += obj.value;
+        return *this;
+    }
+    //add on an integer
+    Roman& operator += (int x){
+        this->value += x;
+        return *this;
+    }
+    //Operator Increment
+    Roman& operator ++()
+    {
+        this->value ++;
+    }
 
 };
 
