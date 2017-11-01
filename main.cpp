@@ -10,6 +10,9 @@ int main()
     testOperatorPlusEqual();
     testOperatorIncrement();
     //testOutput();
+    Roman r1(85);
+    r1.getValue();
+
     return 0;
 }
 

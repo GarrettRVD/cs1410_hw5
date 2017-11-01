@@ -19,7 +19,14 @@ Roman::Roman(const string& romNum) : value(0)
 {
     convertFromRoman(romNum);
 }
-
+/*!
+ * Roman: 1 parameter integer Constructor
+ * @param x
+ */
+Roman::Roman(const int& x): value(x)
+{
+    convertToRoman(value);
+}
 /*!
  * convertFromRoman : converts Roman Numeral to number
  * @return : the number
@@ -82,12 +89,15 @@ unsigned int Roman::getValue() const
 {
     return value;
 }
+string Roman:: getromString(){
+    return romString;
+}
 
 /*!
  * testOutput : tests the output using convertToRoman
  */
-/*
-void Roman::testOutput()
+
+/*void Roman::testOutput()
 {
     Roman a("MDCLXVI");
     string b = a.convertToRoman();
@@ -256,4 +266,38 @@ Roman Roman::operator ++()
     Roman r1;
     r1.value = ++value;
     return r1;
+}
+
+void Roman::convertToRoman(const int& x)
+{
+    int totalValue = x;
+    string romString = romString;
+    do{
+        totalValue-=1000;
+        romString += "M";
+    }while(totalValue>=1000);
+    do{
+        totalValue-=500;
+        romString += "D";
+    }while(totalValue>=500);
+    do{
+        totalValue-=100;
+        romString += "C";
+    }while(totalValue>=100);
+    do{
+        totalValue-=50;
+        romString += "L";
+    }while(totalValue>=50);
+    do{
+        totalValue-=10;
+        romString += "X";
+    }while(totalValue>=10);
+    do{
+        totalValue-=5;
+        romString += "V";
+    }while(totalValue>=5);
+    do{
+        totalValue-=1;
+        romString += "I";
+    }while(totalValue>=1);
 }

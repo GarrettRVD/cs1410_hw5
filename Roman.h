@@ -12,15 +12,17 @@ class Roman
 {
     private:
         unsigned int value;
+        string romString = "";
     public:
         Roman();                            //This allows us to make empty objects. (Default Constructor)
         Roman(const string&);               //This takes Roman numeral as a string.
-        Roman(int romNum): value(romNum),romanNumeral(""){};
+        Roman(const int&);
 
         void convertFromRoman(const string&);             //Converts Roman numeral to a decimal number
-        string convertToRoman() const;      //The method that helps us take an integer and turn it into a roman numeral
+        void convertToRoman(const int&);                        //The method that helps us take an integer and turn it into a roman numeral
 
         unsigned int getValue() const;
+        string getromString();
 
         friend bool checkTest(string testName, int whatItShouldBe, const Roman& obj);
         friend void testOutput();
