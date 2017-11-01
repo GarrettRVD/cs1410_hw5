@@ -7,13 +7,9 @@ int main()
 {
     testConstructor();
     testOperatorPlus();
-    //testOperatorPlusEqual();
-    //testOperatorIncrement();
+    testOperatorPlusEqual();
+    testOperatorIncrement();
     //testOutput();
-    //Roman r1("LXVI");
-    //Roman r2;
-    //r1.convertFromRoman();
-    //r2.convertFromRoman();
     return 0;
 }
 
