@@ -9,13 +9,13 @@ using namespace std;
 /*!
  * Roman: Default Constructor
  */
-Roman::Roman() : value(0), romanNumeral("NONE") {}
+Roman::Roman() : value(0) {}
 
 /*!
  * Roman: 1 parameter Constructor
  * @param romNum : Initial romNum
  */
-Roman::Roman(const string& romNum) : value(0), romanNumeral(romNum)
+Roman::Roman(const string& romNum) : value(0)
 {
     convertFromRoman(romNum);
 }
@@ -49,17 +49,6 @@ void Roman::convertFromRoman(const string& romNum)
             default: value += 0;
         }
     }
-}
-
-/*!
- * getRoman : gets the romanNumeral
- * @return : returns the Roman numeral
- */
-string Roman::getRoman()
-{
-    string a = romanNumeral;
-
-    return a;
 }
 
 /*!
@@ -147,18 +136,17 @@ void testOperatorPlus()
     checkTest("testOperatorPlus #4", 68, c);
     //make sure the left operand wasn't modified
     checkTest("testOperatorPlus #5", 16, a);
-/*
+
     //Test adding an int with an object
     c = 578 + a;
     checkTest("testOperatorPlus #6", 594, c);
     //make sure the right operand wasn't modified
-    checkTest("testOperatorPlus #7", 16, a);/*
+    checkTest("testOperatorPlus #7", 16, a);
 }
 
 /*!
  * testOperatorPlusEqual : testing plus-equal operator with Roman objects
  */
-/*
 void testOperatorPlusEqual()
 {
     //Test adding two roman objects
@@ -173,11 +161,10 @@ void testOperatorPlusEqual()
     b += 17;
     checkTest("testOperatorPlusEqual #3", 1218, b);
 }
-*/
+
 /*!
  * testOperatorIncrement : testing increment operator with Roman objects
  */
-/*
 void testOperatorIncrement()
 {
     //Test prefix increment
@@ -187,7 +174,7 @@ void testOperatorIncrement()
     checkTest("testOperatorIncrement #1", 1053, a);
     checkTest("testOperatorIncrement #2", 1053, b);
 }
-*/
+
 /*!
  * testConsoleIO : testing console input/output with Roman objects
  */
@@ -205,72 +192,68 @@ void testConsoleIO()
 }
 */
 
+/*!
+ * operator + overload : <obj> + <obj>
+ * @param r1 : a Roman object
+ * @return r2 : a Roman object
+ */
 Roman Roman::operator + (const Roman &r1) const
 {
     Roman r2;
-
     r2.value = value + r1.getValue();
+    return r2;
+}
+
+/*!
+ * operator + overload : <obj> + <const>
+ * @param v : a const integer
+ * @return r1 : a Roman object
+ */
+Roman Roman::operator + (const int v) const
+{
+    Roman r1;
+    r1.value = value + v;
     return r1;
 }
 
-Roman Roman::operator + (int x)
+/*!
+ * operator + overload : <const> + <obj>
+ * @param v : a const integer
+ * @param r1 : a Roman object
+ * @return r2 : a Roman object
+ */
+Roman operator + (const int v, Roman &r1)
 {
-    Roman r1(*this);
-    r1.value+=x;
+    Roman r2;
+    r2.value = v + r1.getValue();
+    return r2;
+}
+
+/*!
+ * operator += overload : <obj> += <obj>
+ * @param r1 : a Roman object
+ */
+void Roman::operator += (const Roman &r1)
+{
+    value += r1.getValue();
+}
+
+/*!
+ * operator += overload : <obj> += <const>
+ * @param v : a const integer
+ */
+void Roman::operator += (const int v)
+{
+    value += v;
+}
+
+/*!
+ * operator ++ overload : ++<obj>
+ * @return r1 : a Roman object
+ */
+Roman Roman::operator ++()
+{
+    Roman r1;
+    r1.value = ++value;
     return r1;
 }
-
-//Plus Equal Operators
-Roman& Roman::operator += (Roman const &obj)
-{
-    this->value += obj.value;
-    return *this;
-}
-
-//add on an integer
-Roman& Roman::operator += (int x)
-{
-    this->value += x;
-    return *this;
-}
-
-//Operator Increment
-Roman& Roman::operator ++()
-{
-    this->value ++;
-}
-
-    string Roman::convertToRoman() const
-    {
-        int totalValue = value;
-        string romString;
-        do{
-            totalValue-=1000;
-            romString += "M";
-        }while(totalValue>=1000);
-        do{
-            totalValue-=500;
-            romString += "D";
-        }while(totalValue>=500);
-        do{
-            totalValue-=100;
-            romString += "C";
-        }while(totalValue>=100);
-        do{
-            totalValue-=50;
-            romString += "L";
-        }while(totalValue>=50);
-        do{
-            totalValue-=10;
-            romString += "X";
-        }while(totalValue>=10);
-        do{
-            totalValue-=5;
-            romString += "V";
-        }while(totalValue>=5);
-        do{
-            totalValue-=1;
-            romString += "I";
-        }while(totalValue>=1);
-        return romString;
-    }
