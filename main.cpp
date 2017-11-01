@@ -5,15 +5,13 @@ using namespace std;
 
 int main()
 {
-    testConstructor();
-    testOperatorPlus();
+    //testConstructor();
+    //testOperatorPlus();
     //testOperatorPlusEqual();
     //testOperatorIncrement();
     //testOutput();
-    //Roman r1("LXVI");
-    //Roman r2;
-    //r1.convertFromRoman();
-    //r2.convertFromRoman();
+    Roman test(1666);
+    cout<<test.convertToRoman();
     return 0;
 }
 

@@ -16,6 +16,7 @@ class Roman
     public:
         Roman();                            //This allows us to make empty objects. (Default Constructor)
         Roman(const string&);               //This takes Roman numeral as a string.
+        Roman(int romNum): value(romNum),romanNumeral(""){};
 
         void convertFromRoman(const string&);             //Converts Roman numeral to a decimal number
 

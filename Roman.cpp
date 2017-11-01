@@ -239,3 +239,38 @@ Roman& Roman::operator ++()
 {
     this->value ++;
 }
+
+    string Roman::convertToRoman() const
+    {
+        int totalValue = value;
+        string romString;
+        do{
+            totalValue-=1000;
+            romString += "M";
+        }while(totalValue>=1000);
+        do{
+            totalValue-=500;
+            romString += "D";
+        }while(totalValue>=500);
+        do{
+            totalValue-=100;
+            romString += "C";
+        }while(totalValue>=100);
+        do{
+            totalValue-=50;
+            romString += "L";
+        }while(totalValue>=50);
+        do{
+            totalValue-=10;
+            romString += "X";
+        }while(totalValue>=10);
+        do{
+            totalValue-=5;
+            romString += "V";
+        }while(totalValue>=5);
+        do{
+            totalValue-=1;
+            romString += "I";
+        }while(totalValue>=1);
+        return romString;
+    }
