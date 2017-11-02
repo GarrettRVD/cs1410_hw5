@@ -19,17 +19,10 @@ Roman::Roman(const string& romNum) : value(0)
 {
     convertFromRoman(romNum);
 }
+
 /*!
- * Roman: 1 parameter integer Constructor
- * @param x
- */
-Roman::Roman(const int& x): value(x)
-{
-    convertToRoman(value);
-}
-/*!
- * convertFromRoman : converts Roman Numeral to number
- * @return : the number
+ * convertFromRoman : converts a Roman numeral into a decimal number
+ * @param romNum : a Roman numeral string
  */
 void Roman::convertFromRoman(const string& romNum)
 {
@@ -63,7 +56,7 @@ void Roman::convertFromRoman(const string& romNum)
  * @param testName : the function it is testing
  * @param whatItShouldBe : the expected result
  * @param obj : a Roman object
- * @return : true or false
+ * @return bool : true or false
  */
 bool checkTest(string testName, int whatItShouldBe, const Roman& obj)
 {
@@ -82,22 +75,41 @@ bool checkTest(string testName, int whatItShouldBe, const Roman& obj)
 }
 
 /*!
+ * checkTest: tests for pass or fail
+ * @param testName : the function it is testing
+ * @param whatItShouldBe : the expected result
+ * @param whatItIs : a string
+ * @return bool : true or false
+ */
+bool checkTest(string testName, string whatItShouldBe, string whatItIs)
+{
+    if (whatItShouldBe == whatItIs)
+    {
+        cout << "Passed " << testName << endl;
+        return true;
+    }
+    else
+    {
+        cout << "****** Failed test " << testName << " ****** " << endl
+             << "     Object contained: "<< whatItIs << endl
+             << "     Output should have contained: " << whatItShouldBe << endl;
+        return false;
+    }
+}
+
+/*!
  * getValue : gets the value
- * @return : returns the value
+ * @return value : returns the value
  */
 unsigned int Roman::getValue() const
 {
     return value;
 }
-string Roman:: getromString(){
-    return romString;
-}
 
 /*!
  * testOutput : tests the output using convertToRoman
  */
-
-/*void Roman::testOutput()
+void testOutput()
 {
     Roman a("MDCLXVI");
     string b = a.convertToRoman();
@@ -108,7 +120,7 @@ string Roman:: getromString(){
     b = c.convertToRoman();
     checkTest("testOutput #2", "VII", b);
 }
-*/
+
 /*!
  * testConstructor : tests the constructors
  */
@@ -268,36 +280,50 @@ Roman Roman::operator ++()
     return r1;
 }
 
-void Roman::convertToRoman(const int& x)
+/*!
+ * convertToRoman : converts a decimal number to a Roman numeral
+ * @return romString : a Roman numeral string
+ */
+string Roman::convertToRoman()
 {
-    int totalValue = x;
-    string romString = romString;
-    do{
-        totalValue-=1000;
-        romString += "M";
-    }while(totalValue>=1000);
-    do{
-        totalValue-=500;
-        romString += "D";
-    }while(totalValue>=500);
-    do{
-        totalValue-=100;
-        romString += "C";
-    }while(totalValue>=100);
-    do{
-        totalValue-=50;
-        romString += "L";
-    }while(totalValue>=50);
-    do{
-        totalValue-=10;
-        romString += "X";
-    }while(totalValue>=10);
-    do{
-        totalValue-=5;
-        romString += "V";
-    }while(totalValue>=5);
-    do{
-        totalValue-=1;
-        romString += "I";
-    }while(totalValue>=1);
+    do
+    {
+        if (value >= 1000)
+        {
+            value -= 1000;
+            romString += "M";
+        }
+        if (value >= 500)
+        {
+            value -= 500;
+            romString += "D";
+        }
+        if (value >= 100)
+        {
+            value -= 100;
+            romString += "C";
+        }
+        if (value >= 50)
+        {
+            value -= 50;
+            romString += "L";
+        }
+        if (value >= 10)
+        {
+            value -= 10;
+            romString += "X";
+        }
+        if (value >= 5)
+        {
+            value -= 5;
+            romString += "V";
+        }
+        if (value >= 1)
+        {
+            value -= 1;
+            romString += "I";
+        }
+    }while(value > 0);
+
+    return romString;
 }
