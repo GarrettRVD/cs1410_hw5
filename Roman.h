@@ -1,5 +1,5 @@
 //
-// Created by GRees on 10/26/2017.
+// Created by Garrett Van Dyke on 10/26/2017.
 //
 
 #ifndef HOUSE_GRAYJOY_HW5_TASK1_ROMAN_H
@@ -48,7 +48,7 @@ void testConstructor();
 void testOperatorPlus();
 void testOperatorPlusEqual();
 void testOperatorIncrement();
-void testConsoleIO();
+//void testConsoleIO();
 
 bool checkTest(string testName, int whatItShouldBe, const Roman& obj);
 bool checkTest(string testName, string whatItShouldBe, string whatItIs);

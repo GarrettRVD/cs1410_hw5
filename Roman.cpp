@@ -1,5 +1,5 @@
 //
-// Created by GRees on 10/26/2017.
+// Created by Garrett Van Dyke on 10/26/2017.
 //
 #include <iostream>
 using namespace std;
@@ -212,7 +212,7 @@ void testConsoleIO()
     //Test outputting data using the insertion operator <<
     cout << "testConsoleIO #2" << endl << "If this says 260, this test passed: " << a << endl;
 }
-*/
+/*
 
 /*!
  * operator + overload : <obj> + <obj>
